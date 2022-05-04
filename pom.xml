@@ -55,24 +55,9 @@
 	<build>
 		<plugins>
 			<plugin>
-
-				<!-- Building an executable jar -->
-
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.1.0</version>
-				<configuration>
-					<archive>
-						<manifest>
-
-							<!-- give full qualified name of your main class-->
-							<mainClass>com.dio.santander.daniel.bankline.api.BanklineApiApplication</mainClass>
-
-						</manifest>
-					</archive>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

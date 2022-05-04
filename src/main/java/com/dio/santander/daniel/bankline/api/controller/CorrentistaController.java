@@ -19,7 +19,9 @@ public class CorrentistaController {
     private CorrentistaService service;
 
     @GetMapping
-    public List<Correntista> findAll() { return repository.findAll(); }
+    public List<Correntista> findAll() {
+        return repository.findAll();
+    }
 
     @PostMapping
     public void save(@RequestBody NovoCorrentista correntista) {

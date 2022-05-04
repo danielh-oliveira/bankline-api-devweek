@@ -1,7 +1,6 @@
 package com.dio.santander.daniel.bankline.api.controller;
 
 import com.dio.santander.daniel.bankline.api.dto.NovaMovimentacao;
-import com.dio.santander.daniel.bankline.api.dto.NovoCorrentista;
 import com.dio.santander.daniel.bankline.api.model.Movimentacao;
 import com.dio.santander.daniel.bankline.api.repository.MovimentacaoRepository;
 import com.dio.santander.daniel.bankline.api.service.MovimentacaoService;
@@ -25,7 +24,7 @@ public class MovimentacaoController {
     }
 
     @GetMapping("/{idConta}")
-    public List<Movimentacao> findAll(@PathVariable("idConta") Integer idConta){
+    public List<Movimentacao> findAll(@PathVariable("idConta") Integer idConta) {
         return repository.findByIdConta(idConta);
     }
 

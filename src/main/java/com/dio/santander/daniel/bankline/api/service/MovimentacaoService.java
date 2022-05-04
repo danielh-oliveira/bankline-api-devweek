@@ -1,8 +1,10 @@
 package com.dio.santander.daniel.bankline.api.service;
 
 import com.dio.santander.daniel.bankline.api.dto.NovaMovimentacao;
+import com.dio.santander.daniel.bankline.api.model.Correntista;
 import com.dio.santander.daniel.bankline.api.model.Movimentacao;
 import com.dio.santander.daniel.bankline.api.model.MovimentacaoTipo;
+import com.dio.santander.daniel.bankline.api.repository.CorrentistaRepository;
 import com.dio.santander.daniel.bankline.api.repository.MovimentacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.time.LocalDateTime;
 public class MovimentacaoService {
     @Autowired
     private MovimentacaoRepository repository;
+
+    @Autowired
+    private CorrentistaRepository correntistaRepository;
 
     public void save(NovaMovimentacao novaMovimentacao) {
         Movimentacao movimentacao = new Movimentacao();
@@ -26,7 +31,15 @@ public class MovimentacaoService {
         movimentacao.setTipo(movimentacao.getTipo());
         movimentacao.setValor(valor);
 
+        Correntista correntista =
+                correntistaRepository.findById(novaMovimentacao.getIdConta())
+                        .orElse(null);
 
+        if(correntista != null){
+            correntista.getConta()
+                    .setSaldo(correntista.getConta().getSaldo() + valor);
+            correntistaRepository.save(correntista);
+        }
 
         repository.save(movimentacao);
     }

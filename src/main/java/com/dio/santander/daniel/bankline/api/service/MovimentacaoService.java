@@ -27,8 +27,8 @@ public class MovimentacaoService {
 
         movimentacao.setDataHora(LocalDateTime.now());
         movimentacao.setDescricao(novaMovimentacao.getDescricao());
-        movimentacao.setIdConta(movimentacao.getIdConta());
-        movimentacao.setTipo(movimentacao.getTipo());
+        movimentacao.setIdConta(novaMovimentacao.getIdConta());
+        movimentacao.setTipo(novaMovimentacao.getTipo());
         movimentacao.setValor(valor);
 
         Correntista correntista =
